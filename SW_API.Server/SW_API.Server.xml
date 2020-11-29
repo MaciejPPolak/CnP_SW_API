@@ -4,5 +4,111 @@
         <name>SW_API.Server</name>
     </assembly>
     <members>
+        <member name="T:SW_API.Server.Models.AddCharacterRequest">
+            <summary>
+            Data necessary to create new character
+            </summary>
+        </member>
+        <member name="P:SW_API.Server.Models.AddCharacterRequest.Name">
+            <summary>
+            Character Name
+            </summary>
+        </member>
+        <member name="P:SW_API.Server.Models.AddCharacterRequest.MediaAppearances">
+            <summary>
+            Guids of media apperances
+            </summary>
+        </member>
+        <member name="P:SW_API.Server.Models.AddCharacterRequest.Friends">
+            <summary>
+            Guids of related characters
+            </summary>
+        </member>
+        <member name="T:SW_API.Server.Services.CharacterService">
+            <summary>
+            Service to operate on Character data
+            </summary>
+        </member>
+        <member name="M:SW_API.Server.Services.CharacterService.#ctor(SW_API.Domain.Interfaces.ICharacterRepository)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repository">Character Repository DI</param>
+        </member>
+        <member name="M:SW_API.Server.Services.CharacterService.GetById(System.Guid)">
+            <summary>
+            Get Character by ID
+            </summary>
+            <param name="id">GUID</param>
+            <returns>Character DTO object</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.CharacterService.GetList">
+            <summary>
+            Get list of all Characters
+            </summary>
+            <returns>Character DTO list</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.CharacterService.GetList(System.Int32,System.Int32)">
+            <summary>
+            Get list of all Characters with pagination
+            </summary>
+            <param name="pageSize">How many to fetch</param>
+            <param name="pageNumber">Which page of given size are you on</param>
+            <returns>Paginated character DTO list</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.CharacterService.DeleteCharacter(System.Guid)">
+            <summary>
+            Delete Character by ID
+            </summary>
+            <param name="id">GUID</param>
+            <returns>Status</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.CharacterService.AddCharacter(SW_API.Server.Models.AddCharacterRequest)">
+            <summary>
+            Register new character in the system
+            </summary>
+            <param name="request">Character Data</param>
+            <returns>GUID of added entity</returns>
+        </member>
+        <member name="T:SW_API.Server.Services.ICharacterService">
+            <summary>
+            Interface for Character Service
+            </summary>
+        </member>
+        <member name="M:SW_API.Server.Services.ICharacterService.GetById(System.Guid)">
+            <summary>
+            Get Character by ID
+            </summary>
+            <param name="id">GUID</param>
+            <returns>Character DTO object</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.ICharacterService.AddCharacter(SW_API.Server.Models.AddCharacterRequest)">
+            <summary>
+            Register new character in the system
+            </summary>
+            <param name="request">Character Data</param>
+            <returns>GUID of added entity</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.ICharacterService.GetList">
+            <summary>
+            Get list of all Characters
+            </summary>
+            <returns>Character DTO list</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.ICharacterService.GetList(System.Int32,System.Int32)">
+            <summary>
+            Get list of all Characters with pagination
+            </summary>
+            <param name="pageSize">How many to fetch</param>
+            <param name="pageNumber">Which page of given size are you on</param>
+            <returns>Paginated character DTO list</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.ICharacterService.DeleteCharacter(System.Guid)">
+            <summary>
+            Delete Character by ID
+            </summary>
+            <param name="id">GUID</param>
+            <returns>Status</returns>
+        </member>
     </members>
 </doc>

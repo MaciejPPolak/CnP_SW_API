@@ -9,6 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
 using System.Reflection;
+using SW_API.Domain.Interfaces;
+using SW_API.Infrastructure.Repositories;
+using SW_API.Server.Services;
+using Newtonsoft.Json;
 
 namespace SW_API
 {
@@ -46,7 +50,15 @@ namespace SW_API
                 );
             });
 
-            services.AddControllers();
+            // DB Access
+
+            services.AddScoped<ICharacterRepository, CharacterRepository>();
+
+            // Server logic
+
+            services.AddScoped<ICharacterService, CharacterService>();
+
+            services.AddControllers().AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddDbContext<SWDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Database"),
                         x => x.MigrationsAssembly("SW_API.Infrastructure")));

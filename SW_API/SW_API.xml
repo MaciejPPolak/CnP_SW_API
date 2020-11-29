@@ -4,6 +4,65 @@
         <name>SW_API</name>
     </assembly>
     <members>
+        <member name="T:SW_API.Controllers.CharacterController">
+            <summary>
+            Controller for accessing character CRUD
+            </summary>
+        </member>
+        <member name="M:SW_API.Controllers.CharacterController.#ctor(SW_API.Server.Services.ICharacterService)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="characterService">Character Service DI</param>
+        </member>
+        <member name="M:SW_API.Controllers.CharacterController.GetCharacter(System.Guid)">
+            <summary>
+            Returns character by ID
+            </summary>
+            <param name="id">Character GUID</param>
+            <returns>Character object</returns>
+        </member>
+        <member name="M:SW_API.Controllers.CharacterController.GetCharacters">
+            <summary>
+            Returns all characters.
+            </summary>
+            <returns>Collection of characters.</returns>
+        </member>
+        <member name="M:SW_API.Controllers.CharacterController.GetCharactersPaginated(SW_API.Models.PagedListRequest)">
+            <summary>
+            Returns all characters - paginated.
+            </summary>
+            <returns>Paginated collection of characters.</returns>
+        </member>
+        <member name="M:SW_API.Controllers.CharacterController.AddNewCharacter(SW_API.Server.Models.AddCharacterRequest)">
+            <summary>
+            Adds a character to the db.
+            </summary>
+            <param name="newCharacterBody">Object containing info about character to be added.</param>
+            <returns>Operation status</returns>
+        </member>
+        <member name="M:SW_API.Controllers.CharacterController.RemoveCharacter(System.Guid)">
+            <summary>
+            Removes a character from the db
+            </summary>
+            <param name="id">ID of given character object</param>
+            <returns>Operation status</returns>
+        </member>
+        <member name="T:SW_API.Models.PagedListRequest">
+            <summary>
+            Query containing pagination data
+            </summary>
+        </member>
+        <member name="P:SW_API.Models.PagedListRequest.PageSize">
+            <summary>
+            Size of page
+            </summary>
+        </member>
+        <member name="P:SW_API.Models.PagedListRequest.PageNumber">
+            <summary>
+            Page number starts from 1
+            </summary>
+        </member>
         <member name="T:SW_API.Program">
             <summary>
             Main application class

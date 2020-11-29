@@ -10,7 +10,7 @@ using SW_API.Infrastructure.Context;
 namespace SW_API.Infrastructure.Migrations
 {
     [DbContext(typeof(SWDbContext))]
-    [Migration("20201129100955_InitialGeneration")]
+    [Migration("20201129130922_InitialGeneration")]
     partial class InitialGeneration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,15 +107,15 @@ namespace SW_API.Infrastructure.Migrations
             modelBuilder.Entity("SW_API.Domain.Entities.Relationship", b =>
                 {
                     b.HasOne("SW_API.Domain.Entities.Character", "Character")
-                        .WithMany()
+                        .WithMany("Friends")
                         .HasForeignKey("CharacterId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SW_API.Domain.Entities.Character", "Friend")
-                        .WithMany("Friends")
+                        .WithMany()
                         .HasForeignKey("FriendId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Character");

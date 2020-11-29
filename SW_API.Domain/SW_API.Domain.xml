@@ -4,25 +4,29 @@
         <name>SW_API.Domain</name>
     </assembly>
     <members>
-        <member name="T:SW_API.Domain.Entities.BaseEntity">
+        <member name="T:SW_API.Domain.Entities.BasicCharacterDTO">
             <summary>
-            Base abstract entity
+            DTO - Basic character information
             </summary>
         </member>
-        <member name="P:SW_API.Domain.Entities.BaseEntity.Id">
+        <member name="F:SW_API.Domain.Entities.BasicCharacterDTO.Name">
             <summary>
-            Guid
+            Character Name
             </summary>
         </member>
-        <member name="M:SW_API.Domain.Entities.BaseEntity.#ctor(System.Guid)">
+        <member name="T:SW_API.Domain.Entities.BasicMediaDTO">
             <summary>
-            Parametrized CTOR
+            DTO - Basic Media Type
             </summary>
-            <param name="id">GUID</param>
         </member>
-        <member name="M:SW_API.Domain.Entities.BaseEntity.#ctor">
+        <member name="P:SW_API.Domain.Entities.BasicMediaDTO.Title">
             <summary>
-            CTOR
+            Title of media property
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.BasicMediaDTO.Type">
+            <summary>
+            Type of media
             </summary>
         </member>
         <member name="T:SW_API.Domain.Entities.Character">
@@ -73,6 +77,131 @@
         <member name="P:SW_API.Domain.Entities.CharacterAppearance.Media">
             <summary>
             Media entity
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.CharacterDTO">
+            <summary>
+            DTO - Character information
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.CharacterDTO.Name">
+            <summary>
+            Character Name
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.CharacterDTO.Friends">
+            <summary>
+            Related characters
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.CharacterDTO.Appearances">
+            <summary>
+            Media apperances
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.BaseEntity">
+            <summary>
+            Base abstract entity
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.BaseEntity.Id">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.BaseEntity.#ctor(System.Guid)">
+            <summary>
+            Parametrized CTOR
+            </summary>
+            <param name="id">GUID</param>
+        </member>
+        <member name="M:SW_API.Domain.Entities.BaseEntity.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.Error">
+            <summary>
+            Error message returned by requested operation
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Entities.Error.ErrorCode">
+            <summary>
+            HTTP Status Code
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Entities.Error.ReasonMessage">
+            <summary>
+            String with detailed information
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.Error.#ctor(System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Generate new error object
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.PaginatedList`1">
+            <summary>
+            Paginated list base object
+            </summary>
+            <typeparam name="T">Type of list</typeparam>
+        </member>
+        <member name="M:SW_API.Domain.Entities.PaginatedList`1.#ctor(System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="total">Collection count</param>
+            <param name="value">Collection</param>
+        </member>
+        <member name="P:SW_API.Domain.Entities.PaginatedList`1.Value">
+            <summary>
+            List value
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.PaginatedList`1.TotalCount">
+            <summary>
+            Total elements in db
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.Core.RelationEntity">
+            <summary>
+            Parent entity for representations of relations.
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.Result`1">
+            <summary>
+            Operation Result
+            </summary>
+            <typeparam name="T">Expected return value</typeparam>
+        </member>
+        <member name="F:SW_API.Domain.Entities.Result`1.Succeeded">
+            <summary>
+            Has request been completed without errors
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Entities.Result`1.Value">
+            <summary>
+            Value returned by operation
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Entities.Result`1.Error">
+            <summary>
+            Error that occured during operation
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.Result`1.Success(`0)">
+            <summary>
+            Generate new success result
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.Result`1.Success">
+            <summary>
+            Generate new success result
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.Result`1.Failure(SW_API.Domain.Entities.Error)">
+            <summary>
+            Generate new error result
             </summary>
         </member>
         <member name="T:SW_API.Domain.Entities.Media">
@@ -154,6 +283,105 @@
             <summary>
             Video games
             </summary>
+        </member>
+        <member name="T:SW_API.Domain.Interfaces.Core.IBaseRepository">
+            <summary>
+            Default EF Core data access Interface
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.Core.IBaseRepository.GetByIdAsync``1(System.Guid)">
+            <summary>
+            Get object by ID
+            </summary>
+            <typeparam name="T">Entity</typeparam>
+            <param name="id">GUID</param>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.Core.IBaseRepository.PlainListAsync``1">
+            <summary>
+            Get plain object list
+            </summary>
+            <typeparam name="T">Entity</typeparam>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.Core.IBaseRepository.PaginatedListAsync``1(System.Int32,System.Int32)">
+            <summary>
+            Get paginated object list
+            </summary>
+            <typeparam name="T">Entity</typeparam>
+            <param name="pageSize"></param>
+            <param name="pageNumber"></param>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.Core.IBaseRepository.AddAsync``1(``0)">
+            <summary>
+            Add object
+            </summary>
+            <typeparam name="T">Entity</typeparam>
+            <param name="entity"></param>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.Core.IBaseRepository.UpdateAsync``1(``0)">
+            <summary>
+            Update Object
+            </summary>
+            <typeparam name="T">Entity</typeparam>
+            <param name="entity"></param>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.Core.IBaseRepository.DeleteAsync``1(``0)">
+            <summary>
+            Delete Object
+            </summary>
+            <typeparam name="T">Entity</typeparam>
+            <param name="entity"></param>
+        </member>
+        <member name="T:SW_API.Domain.Interfaces.ICharacterRepository">
+            <summary>
+            Interface to access data for Character entity
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.ICharacterRepository.CharacterByIdAsync(System.Guid)">
+            <summary>
+            Retrieves media by ID
+            </summary>
+            <param name="id">GUID of object</param>
+            <returns>Character DTO</returns>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.ICharacterRepository.CharacterPlainListAsync">
+            <summary>
+            Retrieves list of all Characters in the system
+            </summary>
+            <returns>Collection of Character DTOs</returns>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.ICharacterRepository.CharacterPaginatedListAsync(System.Int32,System.Int32)">
+            <summary>
+            Returns slice of all Character entities in the system based on parameters
+            </summary>
+            <param name="pageSize">How many to fetch</param>
+            <param name="pageNumber">Which page of given size are you on</param>
+            <returns>Collection of Character DTOs</returns>
+        </member>
+        <member name="T:SW_API.Domain.Interfaces.IMediaRepository">
+            <summary>
+            Interface to access data for Media entity
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.IMediaRepository.MediaByIdAsync(System.Guid)">
+            <summary>
+            Retrieves media by ID
+            </summary>
+            <param name="id">GUID of object</param>
+            <returns>Media Entity</returns>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.IMediaRepository.MediaPlainListAsync">
+            <summary>
+            Retrieves list of all Media entities in the system
+            </summary>
+            <returns>Collection of Media Entity</returns>
+        </member>
+        <member name="M:SW_API.Domain.Interfaces.IMediaRepository.MediaPaginatedListAsync(System.Int32,System.Int32)">
+            <summary>
+            Returns slice of all media entities in the system based on parameters
+            </summary>
+            <param name="pageSize">How many to fetch</param>
+            <param name="pageNumber">Which page of given size are you on</param>
+            <returns>Collection of Media Entity</returns>
         </member>
     </members>
 </doc>

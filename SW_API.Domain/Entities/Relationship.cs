@@ -1,13 +1,15 @@
-﻿using System;
+﻿using SW_API.Domain.Entities.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace SW_API.Domain.Entities
 {
     /// <summary>
     /// Representation of character to character relation
     /// </summary>
-    public class Relationship
+    public class Relationship: RelationEntity
     {
         /// <summary>
         /// GUID of character

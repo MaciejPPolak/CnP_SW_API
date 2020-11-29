@@ -1,11 +1,12 @@
-﻿using System;
+﻿using SW_API.Domain.Entities.Core;
+using System;
 
 namespace SW_API.Domain.Entities
 {
     /// <summary>
     /// Representation of character to media relation
     /// </summary>
-    public class CharacterAppearance
+    public class CharacterAppearance: RelationEntity
     {
         /// <summary>
         /// GUID of character

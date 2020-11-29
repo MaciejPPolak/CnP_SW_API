@@ -68,13 +68,13 @@ namespace SW_API.Infrastructure.Context
                 .HasKey(rel => new { rel.CharacterId, rel.FriendId });
 
             modelBuilder.Entity<Relationship>()
-                .HasOne(rel => rel.Character).WithMany()
-                .HasForeignKey(rel => rel.CharacterId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(rel => rel.Character).WithMany(ch => ch.Friends)
+                .HasForeignKey(rel => rel.CharacterId);
 
             modelBuilder.Entity<Relationship>()
-                .HasOne(rel => rel.Friend).WithMany(ch => ch.Friends)
-                .HasForeignKey(rel => rel.FriendId);
+                .HasOne(rel => rel.Friend).WithMany()
+                .HasForeignKey(rel => rel.FriendId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
