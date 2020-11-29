@@ -5,7 +5,10 @@ using System.Text;
 
 namespace SW_API.Domain.Entities
 {
-    public class Media
+    /// <summary>
+    /// Media property within the Star Wars franchise
+    /// </summary>
+    public class Media: BaseEntity
     {
         /// <summary>
         /// CTOR
@@ -27,5 +30,11 @@ namespace SW_API.Domain.Entities
         /// Release date
         /// </summary>
         public DateTime ReleaseDate { get; set; }
+
+        /// <summary>
+        /// Character apperances
+        /// </summary>
+        public virtual ICollection<CharacterAppearance> CharacterAppearances { get; set; }
+
     }
 }

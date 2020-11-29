@@ -48,7 +48,8 @@ namespace SW_API
 
             services.AddControllers();
 
-            services.AddDbContext<SWDbContext>();
+            services.AddDbContext<SWDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Database"),
+                        x => x.MigrationsAssembly("SW_API.Infrastructure")));
 
             AddSwagger(services);
 

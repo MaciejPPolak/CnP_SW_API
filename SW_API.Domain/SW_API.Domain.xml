@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SW_API.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:SW_API.Domain.Entities.BaseEntity">
+            <summary>
+            Base abstract entity
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.BaseEntity.Id">
+            <summary>
+            Guid
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.BaseEntity.#ctor(System.Guid)">
+            <summary>
+            Parametrized CTOR
+            </summary>
+            <param name="id">GUID</param>
+        </member>
+        <member name="M:SW_API.Domain.Entities.BaseEntity.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.Character">
+            <summary>
+            Character Entity
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.Character.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Character.Name">
+            <summary>
+            Character Name
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Character.MediaAppearances">
+            <summary>
+            Media apperances
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Character.Friends">
+            <summary>
+            Related characters
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.CharacterAppearance">
+            <summary>
+            Representation of character to media relation
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.CharacterAppearance.CharacterId">
+            <summary>
+            GUID of character
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.CharacterAppearance.Character">
+            <summary>
+            Character entity
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.CharacterAppearance.MediaId">
+            <summary>
+            GUID of media
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.CharacterAppearance.Media">
+            <summary>
+            Media entity
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.Media">
+            <summary>
+            Media property within the Star Wars franchise
+            </summary>
+        </member>
+        <member name="M:SW_API.Domain.Entities.Media.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Media.Title">
+            <summary>
+            Title of media property
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Media.Type">
+            <summary>
+            Type of media
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Media.ReleaseDate">
+            <summary>
+            Release date
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Media.CharacterAppearances">
+            <summary>
+            Character apperances
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.Relationship">
+            <summary>
+            Representation of character to character relation
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Relationship.CharacterId">
+            <summary>
+            GUID of character
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Relationship.Character">
+            <summary>
+            Character entity
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Relationship.FriendId">
+            <summary>
+            GUID of connected character
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.Relationship.Friend">
+            <summary>
+            Connected character entity
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Enums.MediaEntityType">
+            <summary>
+            Types of Media
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Enums.MediaEntityType.Movie">
+            <summary>
+            Movies
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Enums.MediaEntityType.TV">
+            <summary>
+            TV and Animated Series
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Enums.MediaEntityType.Book">
+            <summary>
+            Books and comics
+            </summary>
+        </member>
+        <member name="F:SW_API.Domain.Enums.MediaEntityType.VideoGame">
+            <summary>
+            Video games
+            </summary>
+        </member>
+    </members>
+</doc>

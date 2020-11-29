@@ -25,12 +25,12 @@ namespace SW_API.Domain.Entities
         /// <summary>
         /// Media apperances
         /// </summary>
-        public virtual ICollection<Media> Media { get; set; }
+        public virtual ICollection<CharacterAppearance> MediaAppearances { get; set; }
 
         /// <summary>
         /// Related characters
         /// </summary>
-        public virtual ICollection<Character> Friends { get; set; }
+        public virtual ICollection<Relationship> Friends { get; set; }
 
     }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SW_API</name>
+    </assembly>
+    <members>
+        <member name="T:SW_API.Program">
+            <summary>
+            Main application class
+            </summary>
+        </member>
+        <member name="M:SW_API.Program.Main(System.String[])">
+            <summary>
+            Main application method
+            </summary>
+            <param name="args">Running arguments</param>
+        </member>
+        <member name="M:SW_API.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Create Host Builder
+            </summary>
+            <param name="args">Running Arguments</param>
+            <returns>Host Builder</returns>
+        </member>
+        <member name="T:SW_API.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:SW_API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup Constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:SW_API.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:SW_API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+        </member>
+        <member name="M:SW_API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+        </member>
+    </members>
+</doc>
