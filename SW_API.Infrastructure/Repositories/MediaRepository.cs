@@ -24,7 +24,7 @@ namespace SW_API.Infrastructure.Repositories
             return await _dbContext.Media
                 .Where(c => c.Id == id)
                 .Include(med => med.CharacterAppearances).ThenInclude(ca => ca.Character)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(entity => entity.Id == id);
         }
 
         public async Task<List<Media>> MediaPlainListAsync()

@@ -7,44 +7,43 @@ using System.Threading.Tasks;
 namespace SW_API.Server.Services
 {
     /// <summary>
-    /// Interface for Character Service
+    /// Interface for Media Service
     /// </summary>
-    public interface ICharacterService
+    public interface IMediaService
     {
         /// <summary>
-        /// Get Character by ID
+        /// Get media by ID
         /// </summary>
         /// <param name="id">GUID</param>
         /// <returns>Character DTO object</returns>
-        public Task<Result<CharacterDTO>> GetById(Guid id);
+        public Task<Result<Media>> GetById(Guid id);
 
         /// <summary>
-        /// Register new character in the system
+        /// Register new media in the system
         /// </summary>
-        /// <param name="request">Character Data</param>
+        /// <param name="request">Media Data</param>
         /// <returns>GUID of added entity</returns>
-        public Task<Result<Guid>> AddCharacter(AddCharacterRequest request);
+        public Task<Result<Guid>> AddMedia(AddMediaRequest request);
 
         /// <summary>
-        /// Get list of all Characters
+        /// Get list of all media
         /// </summary>
-        /// <returns>Character DTO list</returns>
-        Task<Result<List<CharacterDTO>>> GetList();
+        /// <returns>Media DTO list</returns>
+        Task<Result<List<Media>>> GetList();
 
         /// <summary>
-        /// Get list of all Characters with pagination
+        /// Get list of all media with pagination
         /// </summary>
         /// <param name="pageSize">How many to fetch</param>
         /// <param name="pageNumber">Which page of given size are you on</param>
-        /// <returns>Paginated character DTO list</returns>
-        Task<Result<PaginatedList<CharacterDTO>>> GetList(int pageSize, int pageNumber);
+        /// <returns>Paginated media DTO list</returns>
+        Task<Result<PaginatedList<Media>>> GetList(int pageSize, int pageNumber);
 
         /// <summary>
-        /// Delete Character by ID
+        /// Delete media by ID
         /// </summary>
         /// <param name="id">GUID</param>
         /// <returns>Status</returns>
-        Task<Result<bool>> DeleteCharacter(Guid id);
-
+        Task<Result<bool>> DeleteMedia(Guid id);
     }
 }

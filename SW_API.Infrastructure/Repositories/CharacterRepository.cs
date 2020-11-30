@@ -29,7 +29,7 @@ namespace SW_API.Infrastructure.Repositories
                     Friends = character.Friends.Select(frnd => new BasicCharacterDTO() { Name = frnd.Friend.Name, Id = frnd.Friend.Id }).ToList(),
                     Appearances = character.MediaAppearances.Select(media => new BasicMediaDTO() { Title = media.Media.Title, Id = media.Media.Id, Type = media.Media.Type }).ToList()
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(entity => entity.Id == id);
         }
 
         public async Task<List<CharacterDTO>> CharacterPlainListAsync()

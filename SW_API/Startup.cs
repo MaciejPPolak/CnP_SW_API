@@ -53,10 +53,12 @@ namespace SW_API
             // DB Access
 
             services.AddScoped<ICharacterRepository, CharacterRepository>();
+            services.AddScoped<IMediaRepository, MediaRepository>();
 
             // Server logic
 
             services.AddScoped<ICharacterService, CharacterService>();
+            services.AddScoped<IMediaService, MediaService>();
 
             services.AddControllers().AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 

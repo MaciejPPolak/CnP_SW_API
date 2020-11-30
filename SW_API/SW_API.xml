@@ -48,6 +48,50 @@
             <param name="id">ID of given character object</param>
             <returns>Operation status</returns>
         </member>
+        <member name="T:SW_API.Controllers.MediaController">
+            <summary>
+            Controlled for accessing media CRUD
+            </summary>
+        </member>
+        <member name="M:SW_API.Controllers.MediaController.#ctor(SW_API.Server.Services.IMediaService)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="mediaService">Media Service DI</param>
+        </member>
+        <member name="M:SW_API.Controllers.MediaController.GetMedia(System.Guid)">
+            <summary>
+            Returns media by ID
+            </summary>
+            <param name="id">Media GUID</param>
+            <returns>Media object</returns>
+        </member>
+        <member name="M:SW_API.Controllers.MediaController.GetMediaList">
+            <summary>
+            Returns all media.
+            </summary>
+            <returns>Collection of media.</returns>
+        </member>
+        <member name="M:SW_API.Controllers.MediaController.GetMediaPaginated(SW_API.Models.PagedListRequest)">
+            <summary>
+            Returns all media - paginated.
+            </summary>
+            <returns>Paginated collection of media.</returns>
+        </member>
+        <member name="M:SW_API.Controllers.MediaController.AddNewMedia(SW_API.Server.Models.AddMediaRequest)">
+            <summary>
+            Adds a media to the db.
+            </summary>
+            <param name="newMediaBody">Object containing info about media to be added.</param>
+            <returns>Operation status</returns>
+        </member>
+        <member name="M:SW_API.Controllers.MediaController.RemoveMedia(System.Guid)">
+            <summary>
+            Removes a media from the db
+            </summary>
+            <param name="id">ID of given media object</param>
+            <returns>Operation status</returns>
+        </member>
         <member name="T:SW_API.Models.PagedListRequest">
             <summary>
             Query containing pagination data

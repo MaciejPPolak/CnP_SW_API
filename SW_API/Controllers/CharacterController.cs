@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SW_API.Domain.Entities;
 using SW_API.Models;
 using SW_API.Server.Models;
 using SW_API.Server.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SW_API.Controllers
@@ -36,7 +34,7 @@ namespace SW_API.Controllers
         /// <returns>Character object</returns>
         [HttpGet]
         [Route("{id:Guid}", Name = nameof(GetCharacter))]
-        [ProducesResponseType(typeof(Character), 200)]
+        [ProducesResponseType(typeof(CharacterDTO), 200)]
         [ProducesResponseType(typeof(string), 404)]
         public async Task<IActionResult> GetCharacter([FromRoute] Guid id)
         {
@@ -54,7 +52,7 @@ namespace SW_API.Controllers
         /// <returns>Collection of characters.</returns>
         [HttpGet]
         [Route("list/full", Name = nameof(GetCharacters))]
-        [ProducesResponseType(typeof(IEnumerable<Character>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<CharacterDTO>), 200)]
         public async Task<IActionResult> GetCharacters()
         {
             var characterCollection = await _characterService.GetList();
@@ -68,10 +66,10 @@ namespace SW_API.Controllers
         /// <returns>Paginated collection of characters.</returns>
         [HttpGet]
         [Route("list", Name = nameof(GetCharactersPaginated))]
-        [ProducesResponseType(typeof(IEnumerable<Character>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<CharacterDTO>), 200)]
         public async Task<IActionResult> GetCharactersPaginated([FromQuery]PagedListRequest request)
         {
-            var characterCollection = await _characterService.GetList(request.PageNumber, request.PageSize);
+            var characterCollection = await _characterService.GetList(request.PageSize, request.PageNumber);
 
             if(!characterCollection.Succeeded)
                 return StatusCode((int)characterCollection.Error.ErrorCode, characterCollection.Error.ReasonMessage);
@@ -79,7 +77,7 @@ namespace SW_API.Controllers
             Response.Headers.Add("Access-Control-Expose-Headers", "X-Total-Count");
             Response.Headers.Add("X-Total-Count", characterCollection.Value.TotalCount.ToString());
 
-            return Ok(characterCollection.Value);
+            return Ok(characterCollection.Value.Value);
         }
 
         /// <summary>
@@ -87,7 +85,7 @@ namespace SW_API.Controllers
         /// </summary>
         /// <param name="newCharacterBody">Object containing info about character to be added.</param>
         /// <returns>Operation status</returns>
-        [HttpPost]
+        [HttpPut]
         [Route("", Name = nameof(AddNewCharacter))]
         [ProducesResponseType(typeof(int), 200)]
         [ProducesResponseType(typeof(string), 400)]
@@ -121,6 +119,8 @@ namespace SW_API.Controllers
 
             return StatusCode((int)removalOperation.Error.ErrorCode, removalOperation.Error.ReasonMessage);
         }
+
+        //TODO : POST UpdateCharacter
 
     }
 }
