@@ -54,6 +54,7 @@ namespace SW_API
 
             services.AddScoped<ICharacterRepository, CharacterRepository>();
             services.AddScoped<IMediaRepository, MediaRepository>();
+            services.AddScoped<IRelationRepository, RelationRepository>();
 
             // Server logic
 

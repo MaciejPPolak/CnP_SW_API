@@ -7,14 +7,8 @@ namespace SW_API.Domain.Entities
     /// <summary>
      /// DTO - Character information
      /// </summary>
-    public class CharacterDTO : BaseEntity
+    public class CharacterDTO : BasicCharacterDTO
     {
-
-        /// <summary>
-        /// Character Name
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         /// Related characters
         /// </summary>

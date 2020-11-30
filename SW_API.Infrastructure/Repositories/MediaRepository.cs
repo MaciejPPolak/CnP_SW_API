@@ -19,31 +19,52 @@ namespace SW_API.Infrastructure.Repositories
             _dbContext = context;
         }
 
-        public async Task<Media> MediaByIdAsync(Guid id)
+        public async Task<MediaDTO> MediaByIdAsync(Guid id)
         {
             return await _dbContext.Media
-                .Where(c => c.Id == id)
-                .Include(med => med.CharacterAppearances).ThenInclude(ca => ca.Character)
+                .Where(m => m.Id == id)
+                .Select(media => new MediaDTO
+                {
+                    Id = media.Id,
+                    Title = media.Title,
+                    Type = media.Type,
+                    ReleaseDate = media.ReleaseDate,
+                    CharacterAppearances = media.CharacterAppearances.Select(appearance => new BasicCharacterDTO { Name = appearance.Character.Name, Id = appearance.Character.Id}).ToList()
+                })
                 .FirstOrDefaultAsync(entity => entity.Id == id);
         }
 
-        public async Task<List<Media>> MediaPlainListAsync()
+        public async Task<List<MediaDTO>> MediaPlainListAsync()
         {
 
             return await _dbContext.Media
-                .Include(med => med.CharacterAppearances).ThenInclude(ca => ca.Character)
+                .Select(media => new MediaDTO
+                {
+                    Id = media.Id,
+                    Title = media.Title,
+                    Type = media.Type,
+                    ReleaseDate = media.ReleaseDate,
+                    CharacterAppearances = media.CharacterAppearances.Select(appearance => new BasicCharacterDTO { Name = appearance.Character.Name, Id = appearance.Character.Id }).ToList()
+                })
                 .ToListAsync();
         }
 
-        public async Task<PaginatedList<Media>> MediaPaginatedListAsync(int pageSize, int pageNumber)
+        public async Task<PaginatedList<MediaDTO>> MediaPaginatedListAsync(int pageSize, int pageNumber)
         {
             var offset = (pageNumber - 1) * pageSize;
             var value = await _dbContext.Media
-                .Include(med => med.CharacterAppearances).ThenInclude(ca => ca.Character)
+                .Select(media => new MediaDTO
+                {
+                    Id = media.Id,
+                    Title = media.Title,
+                    Type = media.Type,
+                    ReleaseDate = media.ReleaseDate,
+                    CharacterAppearances = media.CharacterAppearances.Select(appearance => new BasicCharacterDTO { Name = appearance.Character.Name, Id = appearance.Character.Id }).ToList()
+                })
                 .Skip(offset).Take(pageSize)
                 .ToListAsync();
 
-            return new PaginatedList<Media>(_dbContext.Media.Count(), value);
+            return new PaginatedList<MediaDTO>(_dbContext.Media.Count(), value);
         }
     }
 }

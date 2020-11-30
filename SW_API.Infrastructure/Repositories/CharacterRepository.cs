@@ -22,6 +22,7 @@ namespace SW_API.Infrastructure.Repositories
         public async Task<CharacterDTO> CharacterByIdAsync(Guid id)
         {
             return await _dbContext.Characters
+                .Where(c => c.Id == id)
                 .Select(character => new CharacterDTO
                 {
                     Id = character.Id,

@@ -44,6 +44,26 @@
             Release date
             </summary>
         </member>
+        <member name="T:SW_API.Server.Models.UpdateMediaInfoRequest">
+            <summary>
+            Data necessary to create new media entity
+            </summary>
+        </member>
+        <member name="P:SW_API.Server.Models.UpdateMediaInfoRequest.Title">
+            <summary>
+            Title of media property
+            </summary>
+        </member>
+        <member name="P:SW_API.Server.Models.UpdateMediaInfoRequest.Type">
+            <summary>
+            Type of media
+            </summary>
+        </member>
+        <member name="P:SW_API.Server.Models.UpdateMediaInfoRequest.ReleaseDate">
+            <summary>
+            Release date
+            </summary>
+        </member>
         <member name="T:SW_API.Server.Services.CharacterService">
             <summary>
             Service to operate on Character data
@@ -170,6 +190,14 @@
             <param name="id">GUID</param>
             <returns>Status</returns>
         </member>
+        <member name="M:SW_API.Server.Services.IMediaService.UpdateMediaBaseInfo(System.Guid,SW_API.Server.Models.UpdateMediaInfoRequest)">
+            <summary>
+            Updates basic information about entity
+            </summary>
+            <param name="id">GUID</param>
+            <param name="request">Target data value</param>
+            <returns>Status</returns>
+        </member>
         <member name="T:SW_API.Server.Services.MediaService">
             <summary>
             Service to operate on Media data
@@ -214,6 +242,14 @@
             Delete media by ID
             </summary>
             <param name="id">GUID</param>
+            <returns>Status</returns>
+        </member>
+        <member name="M:SW_API.Server.Services.MediaService.UpdateMediaBaseInfo(System.Guid,SW_API.Server.Models.UpdateMediaInfoRequest)">
+            <summary>
+            Updates basic information about entity
+            </summary>
+            <param name="id">GUID</param>
+            <param name="request">Target data value</param>
             <returns>Status</returns>
         </member>
     </members>

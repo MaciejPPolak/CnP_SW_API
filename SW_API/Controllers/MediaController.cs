@@ -121,7 +121,26 @@ namespace SW_API.Controllers
             return StatusCode((int)removalOperation.Error.ErrorCode, removalOperation.Error.ReasonMessage);
         }
 
-        //TODO : POST UpdateMedia
+        /// <summary>
+        /// Updates media information in db
+        /// </summary>
+        /// <param name="id">ID of given media object</param>
+        /// <param name="request">Target data values</param>
+        /// <returns>Operation status</returns>
+        [HttpPost]
+        [Route("{id:Guid}", Name = nameof(UpdateMediaBaseInfo))]
+        [ProducesResponseType(typeof(bool), 200)]
+        [ProducesResponseType(typeof(string), 404)]
+        [ProducesResponseType(typeof(string), 500)]
+        public async Task<IActionResult> UpdateMediaBaseInfo([FromRoute] Guid id,  [FromBody] UpdateMediaInfoRequest request)
+        {
+            var updateOperation = await _mediaService.UpdateMediaBaseInfo(id, request);
+
+            if (updateOperation.Succeeded)
+                return Ok(updateOperation.Value);
+
+            return StatusCode((int)updateOperation.Error.ErrorCode, updateOperation.Error.ReasonMessage);
+        }
 
     }
 }

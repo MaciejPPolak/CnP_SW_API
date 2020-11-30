@@ -84,11 +84,6 @@
             DTO - Character information
             </summary>
         </member>
-        <member name="P:SW_API.Domain.Entities.CharacterDTO.Name">
-            <summary>
-            Character Name
-            </summary>
-        </member>
         <member name="P:SW_API.Domain.Entities.CharacterDTO.Friends">
             <summary>
             Related characters
@@ -230,6 +225,21 @@
             </summary>
         </member>
         <member name="P:SW_API.Domain.Entities.Media.CharacterAppearances">
+            <summary>
+            Character apperances
+            </summary>
+        </member>
+        <member name="T:SW_API.Domain.Entities.MediaDTO">
+            <summary>
+            Complete Media DTO
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.MediaDTO.ReleaseDate">
+            <summary>
+            Release date
+            </summary>
+        </member>
+        <member name="P:SW_API.Domain.Entities.MediaDTO.CharacterAppearances">
             <summary>
             Character apperances
             </summary>
